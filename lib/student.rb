@@ -54,6 +54,10 @@ class Student
     DB[:conn].execute("SELECT * FROM students WHERE grade = 10 LIMIT 1").map { |row| self.new_from_db(row) }.first
   end
 
+  def self.all_students_in_grade_X(n)
+    DB[:conn].execute("SELECT * FROM students WHERE grade = ?", n).map { |row| self.new_from_db(row) }
+  end
+
   def self.drop_table
     sql = "DROP TABLE IF EXISTS students"
     DB[:conn].execute(sql)
