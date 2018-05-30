@@ -43,7 +43,7 @@ class Student
   end
 
   def self.students_below_12th_grade
-    DB[:conn].execute("SELECT * FROM students where grade < ?", 12)
+    DB[:conn].execute("SELECT * FROM students where grade != ?", 12)
   end
 
   def self.drop_table
