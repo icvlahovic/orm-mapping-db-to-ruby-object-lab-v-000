@@ -16,7 +16,7 @@ class Student
 
   def self.find_by_name(name)
     sql = "SELECT * FROM students WHERE name = ? LIMIT(1)"
-    DB[:conn].execute(sql, name).select { |row| self.new_from_db(row) }.flatten
+    DB[:conn].execute(sql, name).select { |row| self.new_from_db(row) }.flatten.first
   end
 
   def save
