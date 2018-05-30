@@ -39,15 +39,15 @@ class Student
   end
 
   def self.count_all_students_in_grade_9
-    DB[:conn].execute("SELECT * FROM students where grade = ?", 9)
+    DB[:conn].execute("SELECT * FROM students WHERE grade = ?", 9)
   end
 
   def self.students_below_12th_grade
-    DB[:conn].execute("SELECT * FROM students where grade < ?", 12).map { |row| self.new_from_db(row) }
+    DB[:conn].execute("SELECT * FROM students WHERE grade < ?", 12).map { |row| self.new_from_db(row) }
   end
 
-  def self.first_X_students_in_grade_10(x)
-    DB[:conn].execute("SELECT * FROM students where grade = 10, LIMIT ?", x).map { |row| self.new_from_db(row) }
+  def self.first_X_students_in_grade_10(X)
+    DB[:conn].execute("SELECT * FROM students WHERE grade = ?, LIMIT (?)", 10, X).map { |row| self.new_from_db(row) }
   end
 
   def self.drop_table
