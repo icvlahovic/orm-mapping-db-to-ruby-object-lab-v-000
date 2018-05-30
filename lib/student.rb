@@ -46,7 +46,7 @@ class Student
     DB[:conn].execute("SELECT * FROM students WHERE grade < ?", 12).map { |row| self.new_from_db(row) }
   end
 
-  def self.first_X_students_in_grade_10(X)
+  def self.first_X_students_in_grade_10(n)
     DB[:conn].execute("SELECT * FROM students WHERE grade = ?, LIMIT (?)", 10, X).map { |row| self.new_from_db(row) }
   end
 
