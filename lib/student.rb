@@ -42,6 +42,10 @@ class Student
     DB[:conn].execute("SELECT * FROM students where grade = ?", 9)
   end
 
+  def self.students_below_12th_grade
+    DB[:conn].execute("SELECT * FROM students where grade < ?", 12)
+  end
+
   def self.drop_table
     sql = "DROP TABLE IF EXISTS students"
     DB[:conn].execute(sql)
